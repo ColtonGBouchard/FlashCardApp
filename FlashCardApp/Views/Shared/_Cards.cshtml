@@ -1,0 +1,36 @@
+﻿@model IEnumerable<FlashCardApp.Models.Card>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Term)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Definition)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Term)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Definition)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Card", new { id = item.Id }, null) |
+                @Html.ActionLink("Delete", "Delete", "Card", new { id = item.Id }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Return to decks", "Index", "Deck", new { @class = "btn btn-default" })
+</p>

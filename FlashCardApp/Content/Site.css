@@ -1,0 +1,134 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    width:100%;
+    height: 100%;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+#flashcardContainer{
+    height: 300px;
+    width: 600px;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: auto;
+    margin-top: 50px;
+   
+}
+
+
+#flashcardControls{
+    width: 50%;
+    clear: both;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    padding-top: 10%;
+
+}
+
+.fcButton {
+    width: 100px;
+}
+
+.cycleHeader{
+    text-align: center;
+    clear: both;
+}
+
+
+.card {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    padding: 0;
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -o-transition: -o-transform 1s;
+    transition: transform 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+}
+
+.card div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding-top: 50px;
+    text-align: center; 
+    position: absolute;
+    font-size: 4vh;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border: 1px solid #b3b3b3;
+    box-shadow: 5px 5px 3px #888888;
+}
+.card .front {
+  background: AliceBlue;
+}
+.card .back {
+    background: AliceBlue;
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+.card.flipped {
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+
+#deckDiv{
+    padding-top: 10px;
+}
+
+.jumbotron{
+    padding-top: 1px;
+    margin-top: 10px;
+}
+

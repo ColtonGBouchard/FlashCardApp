@@ -1,0 +1,19 @@
+﻿@model FlashCardApp.Models.Deck
+
+@{
+    //ViewBag.Title = "ViewCardsFromDeck";
+    var DeckId = 0;
+    
+}
+
+<h2>@ViewBag.Message</h2>
+<div class="body-content">
+    @Html.ActionLink("Study Deck", "CycleThroughDeck", "Deck", new { id = Model.Id }, new { @class = "btn btn-primary" })  
+    @Html.ActionLink("Add Flashcard", "Create", "Card", new { deckId = Model.Id }, new { @class="btn btn-primary" })
+</div>
+
+<br/>
+
+
+@Html.Partial("_Cards", Model.Flashcards)
+

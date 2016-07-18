@@ -1,0 +1,7 @@
+C:\Users\coltonb\Desktop\FlashCardApp-master\FlashCardApp.BLL\bin\Debug\FlashCardApp.BLL.dll
+C:\Users\coltonb\Desktop\FlashCardApp-master\FlashCardApp.BLL\bin\Debug\FlashCardApp.BLL.pdb
+C:\Users\coltonb\Desktop\FlashCardApp-master\FlashCardApp.BLL\bin\Debug\FlashCardApp.DAL.dll
+C:\Users\coltonb\Desktop\FlashCardApp-master\FlashCardApp.BLL\bin\Debug\FlashCardApp.DAL.pdb
+C:\Users\coltonb\Desktop\FlashCardApp-master\FlashCardApp.BLL\obj\Debug\FlashCardApp.BLL.csprojResolveAssemblyReference.cache
+C:\Users\coltonb\Desktop\FlashCardApp-master\FlashCardApp.BLL\obj\Debug\FlashCardApp.BLL.dll
+C:\Users\coltonb\Desktop\FlashCardApp-master\FlashCardApp.BLL\obj\Debug\FlashCardApp.BLL.pdb

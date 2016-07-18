@@ -1,0 +1,56 @@
+﻿@model FlashCardApp.Models.Card
+
+@{
+    ViewBag.Title = "CycleThroughDeck";
+    
+}
+
+<div class="cycleHeader" >
+    Study Cards
+    @Html.ActionLink("Back to List", "ViewCardsFromDeck", "Deck", new { id = ViewBag.Id }, null)
+</div>
+
+<div id="flashcard">
+    <div id="flashcardContainer">
+        <div class="span4 offset4 card">
+            <div class="front">@Model.Term</div>
+
+            <div class="back" >@Model.Definition</div>
+        </div>
+    </div>
+
+    <div id="flashcardControls" class="span4 offset4 text-center controls">
+            @if (ViewBag.PreviousIndex != null)
+            {
+                <div id="previousCard" class="col-lg-4">
+                    @Html.ActionLink("Previous", "CycleThroughDeck", "Deck", new { index = ViewBag.PreviousIndex }, new { @class = "btn btn-default fcButton " })
+                </div>
+            }
+
+            <button type="button" class="btn btn-primary text-center col-lg-4" id="flipCard" onclick="flip()">Flip Card</button>
+
+            @if (ViewBag.NextIndex != null)
+            {
+                <div id="nextCard" class="col-lg-4">
+                    @Html.ActionLink("Next", "CycleThroughDeck", "Deck", new { index = ViewBag.NextIndex }, new { @class = "btn btn-default fcButton" })
+                </div>
+            }
+   
+    </div>
+</div>
+
+
+
+
+
+
+@section scripts{
+    <script type="text/javascript">
+               
+        function flip() {
+            $('.card').toggleClass('flipped');
+        }
+
+    </script>
+
+}

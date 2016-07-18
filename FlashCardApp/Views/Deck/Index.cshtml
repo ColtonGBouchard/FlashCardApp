@@ -1,0 +1,21 @@
+﻿@model IEnumerable<FlashCardApp.Models.Deck>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+@foreach (var item in Model)
+{
+    <div class="body-content" id="deckDiv">
+        <h3>@item.Name</h3>
+        <p>
+            @Html.ActionLink("Study Deck", "CycleThroughDeck", "Deck", new { id = @item.Id }, new {@class="btn btn-primary" }) 
+            @Html.ActionLink("View Flashcards", "ViewCardsFromDeck", "Deck", new { id = @item.Id }, new {@class="btn btn-primary" })
+            @Html.ActionLink("Delete Deck", "Delete", "Deck", new {id = @item.Id}, new {@class="btn btn-primary" })
+        </p>
+        <hr />
+    </div>
+}
+@Html.ActionLink("Add Flashcard Deck", "Create", "Deck", new { @class = "btn btn-default" })
