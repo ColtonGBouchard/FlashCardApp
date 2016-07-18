@@ -1,5 +1,0 @@
-C:\Users\coltonb\Desktop\FlashCardApp-master\FlashCardApp.DAL\bin\Debug\FlashCardApp.DAL.dll
-C:\Users\coltonb\Desktop\FlashCardApp-master\FlashCardApp.DAL\bin\Debug\FlashCardApp.DAL.pdb
-C:\Users\coltonb\Desktop\FlashCardApp-master\FlashCardApp.DAL\obj\Debug\FlashCardApp.DAL.csprojResolveAssemblyReference.cache
-C:\Users\coltonb\Desktop\FlashCardApp-master\FlashCardApp.DAL\obj\Debug\FlashCardApp.DAL.dll
-C:\Users\coltonb\Desktop\FlashCardApp-master\FlashCardApp.DAL\obj\Debug\FlashCardApp.DAL.pdb
