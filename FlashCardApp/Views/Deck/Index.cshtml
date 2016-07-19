@@ -4,7 +4,10 @@
     ViewBag.Title = "Home Page";
 }
 
-
+@if (TempData["notice"] != null)
+{
+    <p>@TempData["notice"]</p>
+}
 
 @foreach (var item in Model)
 {

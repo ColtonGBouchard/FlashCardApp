@@ -129,42 +129,49 @@ namespace FlashCardApp.Controllers
 
         public ActionResult CycleThroughDeck(int? id, int index = 0)
         {
-            ViewBag.Id = id;
+            
             var cards = (from c in db.Cards
                          where c.DeckId == id
                          select c).ToArray();
 
             var max = cards.Count();
-
-            var currentCard = cards[index];
-
-            if (index == 0 && max == 1)
+            if (max == 0)
             {
-                ViewBag.PreviousIndex = index;
-                ViewBag.NextIndex = index;
-            }
-            else if (index == 0)
-            {
-                ViewBag.PreviousIndex = max - 1;
-                ViewBag.NextIndex = 1;
-            }
-            else if (index == 0 && max == 1)
-            {
-                ViewBag.PreviousIndex = index;
-                ViewBag.NextIndex = index;
-            }
-            else if (index == max - 1 && index != 0)
-            {
-                ViewBag.PreviousIndex = index - 1;
-                ViewBag.NextIndex = 0;
+                TempData["notice"] = "There are no cards in that deck to study. Please add cards and try again.";
+                return RedirectToAction("Index");
             }
             else
             {
-                ViewBag.PreviousIndex = index - 1;
-                ViewBag.NextIndex = index + 1;
-            }
+                var currentCard = cards[index];
 
-            return View(currentCard);
+                if (index == 0 && max == 1)
+                {
+                    ViewBag.PreviousIndex = index;
+                    ViewBag.NextIndex = index;
+                }
+                else if (index == 0)
+                {
+                    ViewBag.PreviousIndex = max - 1;
+                    ViewBag.NextIndex = 1;
+                }
+                else if (index == 0 && max == 1)
+                {
+                    ViewBag.PreviousIndex = index;
+                    ViewBag.NextIndex = index;
+                }
+                else if (index == max - 1 && index != 0)
+                {
+                    ViewBag.PreviousIndex = index - 1;
+                    ViewBag.NextIndex = 0;
+                }
+                else
+                {
+                    ViewBag.PreviousIndex = index - 1;
+                    ViewBag.NextIndex = index + 1;
+                }
+
+                return View(currentCard);
+            }
         }
 
 

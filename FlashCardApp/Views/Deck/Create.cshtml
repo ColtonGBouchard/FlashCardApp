@@ -38,4 +38,7 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () { $("#form-group").attr("autocomplete", "off"); });
+    </script>
 }
