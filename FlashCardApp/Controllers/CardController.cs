@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using FlashCardApp.Models;
 
@@ -12,12 +8,12 @@ namespace FlashCardApp.Controllers
 {
     public class CardController : Controller
     {
-        private FlashCardAppDb db = new FlashCardAppDb();
+        private FlashCardAppDb _flashCardAppDb = new FlashCardAppDb();
 
         // GET: /Card/
         public ActionResult Index()
         {
-            return View(db.Cards.ToList());
+            return View(_flashCardAppDb.Cards.ToList());
         }
 
         // GET: /Card/Details/5
@@ -27,11 +23,14 @@ namespace FlashCardApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Card card = db.Cards.Find(id);
+
+            var card = _flashCardAppDb.Cards.Find(id);
+
             if (card == null)
             {
                 return HttpNotFound();
             }
+
             return View(card);
         }
 
@@ -49,17 +48,13 @@ namespace FlashCardApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="Id,Term,Definition,DeckId")] Card card)
         {
-            if (ModelState.IsValid)
-            {
-                db.Cards.Add(card);
-                db.SaveChanges();
-                return RedirectToAction("Create", "Card", new { deckId = card.DeckId });
-            }
-            
-            return View(card);
+            if (!ModelState.IsValid) return View(card);
+
+            _flashCardAppDb.Cards.Add(card);
+            _flashCardAppDb.SaveChanges();
+
+            return RedirectToAction("Create", "Card", new { deckId = card.DeckId });
         }
-
-
 
         // GET: /Card/Edit/5
         public ActionResult Edit(int? id)
@@ -68,11 +63,14 @@ namespace FlashCardApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Card card = db.Cards.Find(id);
+
+            var card = _flashCardAppDb.Cards.Find(id);
+
             if (card == null)
             {
                 return HttpNotFound();
             }
+
             return View(card);
         }
 
@@ -83,12 +81,12 @@ namespace FlashCardApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="Id,Term,Definition,DeckId")] Card card)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(card).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("ViewCardsFromDeck", "Deck", new { id = card.DeckId });
-            }
+            if (!ModelState.IsValid) return RedirectToAction("ViewCardsFromDeck", "Deck", new {id = card.DeckId});
+
+            _flashCardAppDb.Entry(card).State = EntityState.Modified;
+
+            _flashCardAppDb.SaveChanges();
+
             return RedirectToAction("ViewCardsFromDeck", "Deck", new { id = card.DeckId });
         }
 
@@ -99,12 +97,10 @@ namespace FlashCardApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Card card = db.Cards.Find(id);
+
+            var card = _flashCardAppDb.Cards.Find(id);
             ViewBag.id = card.DeckId;
-            if (card == null)
-            {
-                return HttpNotFound();
-            }
+
             return View(card);
         }
 
@@ -113,9 +109,11 @@ namespace FlashCardApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Card card = db.Cards.Find(id);
-            db.Cards.Remove(card);
-            db.SaveChanges();
+            var card = _flashCardAppDb.Cards.Find(id);
+
+            _flashCardAppDb.Cards.Remove(card);
+            _flashCardAppDb.SaveChanges();
+
             return RedirectToAction("ViewCardsFromDeck", "Deck", new { id = card.DeckId });
         }
 
@@ -123,7 +121,7 @@ namespace FlashCardApp.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _flashCardAppDb.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -1,19 +1,16 @@
 ﻿using FlashCardApp.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FlashCardApp.Controllers
 {
     public class HomeController : Controller
     {
-        FlashCardAppDb _db = new FlashCardAppDb(); 
+        private readonly FlashCardAppDb _flashCardAppDb = new FlashCardAppDb(); 
 
         public ActionResult Index()
         {
-            var model = _db.Decks.ToList();
+            var model = _flashCardAppDb.Decks.ToList();
             return View(model);
         }
 
@@ -31,20 +28,13 @@ namespace FlashCardApp.Controllers
             return View();
         }
 
-        
-
-
-     
-
-       
         protected override void Dispose(bool disposing)
         {
-            if (_db != null)
+            if (_flashCardAppDb != null)
             {
-                _db.Dispose();
+                _flashCardAppDb.Dispose();
             }
             base.Dispose(disposing);
         }
-
     }
 }
